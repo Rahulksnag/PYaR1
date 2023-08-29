@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Orders</title>
+  <style>
+   body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #007bff;
+    }
+    .order-card {
+      width: 300px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .order-card h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #007bff;
+    }
+    .order-card p {
+      margin: 5px 0;
+    }
+    .order-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .order-card li {
+      margin: 5px 0;
+      color: #555;
+    }
+    .order-card button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .order-card button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  
+</head>
+<body>
+  <h1>Customer Orders</h1>
+  <div id="ordersContainer" onclick="getOrder()">
+    <!-- The fetched orders will be displayed here -->
+  </div>
+
+  <script>
+    const ordersContainer = document.getElementById("ordersContainer");
+
+    // Replace this with actual API call to fetch orders from the server
+    // In a real-world application, you might fetch orders using AJAX or fetch API.
+    const dummyOrders = [
+      {
+        orderId: "1690997263",
+        date: "8-2-2023 22:59:44",
+        totalAmount: 1.00,
+        items: [
+          { name: "Product 1", price: 1, quantity: 2 },
+          { name: "Product 2", price: 1, quantity: 1 },
+        ]
+      },
+      {
+        orderId: "1690997137",
+        date: "8-2-2023 22:55:59",
+        totalAmount: 1.00,
+        items: [
+          { name: "Product 3", price: 1, quantity: 3 },
+        ]
+      },
+    ];
+
+    // Function to create an order card element
+    function createOrderCard(order) {
+      const orderCard = document.createElement("div");
+      orderCard.classList.add("order-card");
+
+      const orderId = document.createElement("h3");
+      orderId.textContent = `Order ID: ${order.orderId}`;
+      orderCard.appendChild(orderId);
+
+      const orderDate = document.createElement("p");
+      orderDate.textContent = `Date: ${order.date}`;
+      orderCard.appendChild(orderDate);
+
+      const orderItems = document.createElement("ul");
+      order.items.forEach(item => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`;
+        orderItems.appendChild(listItem);
+      });
+      orderCard.appendChild(orderItems);
+
+      const orderTotal = document.createElement("p");
+      orderTotal.textContent = `Total: $${order.totalAmount.toFixed(2)}`;
+      orderCard.appendChild(orderTotal);
+
+      return orderCard;
+    }
+
+    // Function to display the orders
+    function displayOrders(orders) {
+      ordersContainer.innerHTML = "";
+      orders.forEach((order) => {
+        const card = createOrderCard(order);
+        ordersContainer.appendChild(card);
+      });
+    }
+
+    // Call the function to display orders (you should replace dummyOrders with actual data)
+    displayOrders(dummyOrders);
+    function getOrder() {
+    // Replace the window.location.href with the correct path to your dashboard.html in the customer folder
+    window.location.href = "ordertrack.html";
+  }
+  </script>
+</body>
+</html>

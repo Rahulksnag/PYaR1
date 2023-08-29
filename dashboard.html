@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pyar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h1>PYAR</h1>
+      <div class="search-bar">
+        <input type="text" placeholder="Search for products">
+        <button onclick="searchProducts()">Search</button>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="orderc.html">Orders</a></li>
+        <li><a href="#">Account</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="dashboard">
+      <h2>Welcome to your Customer Dashboard</h2>
+      <div class="cards-container" id="cardsContainer">
+        <!-- The generated cards will be appended here -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Pyar. All rights reserved.</p>
+  </footer>
+
+ 
+  <script>
+    // Function to handle the product search action
+    function searchProducts() {
+      // ...
+
+      const dummyProducts = [
+        { name: "Product 1", price: "$19.99", imageSrc: "images/product1.jpg" },
+        { name: "Product 2", price: "$24.99", imageSrc: "images/product2.jpg" },
+        { name: "Product 3", price: "$15.99", imageSrc: "images/product3.jpg" },
+        { name: "Product 4", price: "$15.99", imageSrc: "images/product4.jpg" },
+        { name: "Product 5", price: "$15.99", imageSrc: "images/product5.jpg" },
+        { name: "Product 6", price: "$15.99", imageSrc: "images/product6.jpg" },
+        { name: "Product 7", price: "$15.99", imageSrc: "images/product7.jpg" },
+      ];
+
+      dummyProducts.forEach((product) => {
+        const card = createCard(product.name, product.price, product.imageSrc);
+        cardsContainer.appendChild(card);
+      });
+    }
+
+
+  function redirectToCheckout() {
+    // Open the checkout page URL in a new tab
+    window.open("http://localhost/ecommerce-website-php/checkout.php", "_blank");
+  }
+
+  // Function to create a card element
+  function createCard(name, price, imageSrc) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const image = document.createElement("img");
+    image.src = imageSrc;
+    image.alt = name;
+    card.appendChild(image);
+
+    const contentWrapper = document.createElement("div");
+    contentWrapper.classList.add("content-wrapper");
+
+    const productName = document.createElement("h3");
+    productName.textContent = name;
+    contentWrapper.appendChild(productName);
+
+    const productPrice = document.createElement("p");
+    productPrice.textContent = price;
+    contentWrapper.appendChild(productPrice);
+
+    const buyButton = document.createElement("button");
+    buyButton.textContent = "Buy through pyar";
+    contentWrapper.appendChild(buyButton);
+
+    // Add event listener to the "Buy" button
+    buyButton.addEventListener("click", function () {
+      redirectToCheckout(); // Call the function to handle the redirection
+    });
+
+    card.appendChild(contentWrapper);
+
+    return card;
+  }
+
+    // Function to handle the logout action
+   
+      // ...
+    function logout() {
+      // Implement your logout logic here (e.g., clear session data or user token)
+      // For simplicity, we will just redirect back to the login page.
+      window.location.href = "index.html";
+    }
+    
+
+    // Rest of the code remains the same...
+  </script>
+
+  <style>
+    /* Add CSS styles for the cards */
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      width: 200px;
+      background-color: #f7f7f7;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .content-wrapper {
+      padding: 10px;
+    }
+
+    .content-wrapper h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .content-wrapper p {
+      margin: 5px 0;
+    }
+
+    .content-wrapper button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .content-wrapper button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  </body>
+
+</html>

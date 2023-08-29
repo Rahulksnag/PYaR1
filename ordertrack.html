@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Tracking</title>
+  <link rel="stylesheet" href="style.css">
+  <style>/* style.css */
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .header {
+      background-color: #f1f1f1;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .tracking-form {
+      margin: 20px auto;
+      max-width: 400px;
+      text-align: center;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    .order-status {
+      margin: 20px auto;
+      max-width: 400px;
+      text-align: center;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+    
+    h2 {
+      margin-bottom: 10px;
+    }
+    
+    .status-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .status-list li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .status-date {
+      color: #666;
+    }
+    
+    .status-text {
+      font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Order Tracking</h1>
+  </div>
+
+  <div class="order-status">
+    <h2>Order Status:</h2>
+    <ul class="status-list">
+      <li>
+        <span class="status-text">Order Confirmed </span>
+        <span class="status-date">Aug 2, 2023</span>
+        
+      </li>
+      <li>
+        <span class="status-text">Order will be Shipping on</span>
+        <span class="status-date">Aug 5, 2023</span>
+     
+      </li>
+      <li>
+        <span class="status-text">Order will be Delivered on</span>
+        <span class="status-date">Aug 10, 2023</span>
+      
+      </li>
+    </ul>
+    <div style="margin-top: 3px;">
+      <button onclick="ok()">Delivered</button>
+  </div>
+  </div>
+  <div>
+    
+    <img src="images/delivary.png" style="margin-left: 300px;" height="250px">
+  </div>
+  <script>
+      function ok() {
+          var button = document.querySelector("button"); // Get the button element
+          button.textContent = "ok"; // Set the text content of the button to "ok"
+          button.disabled = true; // Optionally, you can disable the button after clicking.
+      }
+  </script>
+  
+</body>
+</html>
